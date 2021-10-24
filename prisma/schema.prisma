@@ -6,6 +6,17 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
+}
+
+model Manga{
+  id Int @id @default(autoincrement())
+  name String @unique
+  num_acquired Int
+  num_released Int
+  periodicity String
+  finished Boolean
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
 }
